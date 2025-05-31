@@ -15,10 +15,11 @@
     </properties>
     <dependencies>
         <!-- Selenium -->
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.11.0</version>
+            <version>4.33.0</version>
         </dependency>
 
         <!-- Cucumber Java -->
@@ -57,10 +58,11 @@
                     <!--                    <forkMode>perthread</forkMode>-->
                     <!--                    <threadCount>3</threadCount>-->
                     <reuseForks>false</reuseForks>
-                    <argLine>-Duser.language=en</argLine>
-                    <argLine>-Xmx1024m</argLine>
-                    <argLine>-XX:MaxPermSize=256m</argLine>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
+<!--                    <argLine>-Duser.language=en</argLine>-->
+<!--                    <argLine>-Xmx1024m</argLine>-->
+<!--                    <argLine>-XX:MaxPermSize=256m</argLine>-->
+<!--                    <argLine>-Dfile.encoding=UTF-8</argLine>-->
+                    <argLine>-Duser.language=en -Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
                     <includes>
                         <include>TestRunner.java</include>
