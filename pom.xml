@@ -72,9 +72,9 @@
                 <version>3.1.2</version>
                 <configuration>
 
-                    <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+<!--                    <parallel>classes</parallel>-->
+<!--                    <threadCount>2</threadCount>-->
+<!--                    <redirectTestOutputToFile>true</redirectTestOutputToFile>-->
 
                     <!--                    <suiteXmlFiles>-->
                     <!--                        <suiteXmlFile>demoRegressionParallel.xml</suiteXmlFile>-->
