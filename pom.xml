@@ -48,43 +48,42 @@
 
     <build>
         <plugins>
-<!--            &lt;!&ndash; Surefire plugin used to run tests in parallel &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>3.1.2</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash;                    <parallel>methods</parallel>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <forkMode>perthread</forkMode>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <threadCount>3</threadCount>&ndash;&gt;-->
-<!--                    <reuseForks>false</reuseForks>-->
-<!--&lt;!&ndash;                    <argLine>-Duser.language=en</argLine>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <argLine>-Xmx1024m</argLine>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <argLine>-XX:MaxPermSize=256m</argLine>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <argLine>-Dfile.encoding=UTF-8</argLine>&ndash;&gt;-->
-<!--                    <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>-->
-<!--                    <useFile>false</useFile>-->
-<!--                    <includes>-->
-<!--                        <include>**/TestRunner*.class</include>-->
-<!--                    </includes>-->
-<!--                    <testFailureIgnore>true</testFailureIgnore>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+            <!--                <version>3.1.2</version>-->
+            <!--                <configuration>-->
+            <!--&lt;!&ndash;                    <parallel>classes</parallel> &lt;!&ndash; class düzeyinde paralellik &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <threadCount>4</threadCount> &lt;!&ndash; Aynı anda kaç test class'ı çalışsın &ndash;&gt;&ndash;&gt;-->
+            <!--                    <reuseForks>false</reuseForks>-->
+            <!--                    <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>-->
+            <!--                    <useFile>false</useFile>-->
+            <!--                    <includes>-->
+            <!--                        <include>**/TestRunner*</include>-->
+            <!--                    </includes>-->
+            <!--                    <testFailureIgnore>true</testFailureIgnore>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-<!--                    <parallel>classes</parallel> &lt;!&ndash; class düzeyinde paralellik &ndash;&gt;-->
-<!--                    <threadCount>4</threadCount> &lt;!&ndash; Aynı anda kaç test class'ı çalışsın &ndash;&gt;-->
-                    <reuseForks>false</reuseForks>
-                    <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>
-                    <useFile>false</useFile>
+
+                    <parallel>true</parallel>
+                    <threadCount>2</threadCount>
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFile>demoRegressionParallel.xml</suiteXmlFile>-->
+                    <!--                    </suiteXmlFiles>-->
+
+                    <!--                     Spesifik olarak çalıştırılmak istenen class dosyasını buraya belirtiyorum. include yaparak -->
                     <includes>
-                        <include>**/TestRunner*</include>
+                        <include>**/TestRunner.java</include>
                     </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
