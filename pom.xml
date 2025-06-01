@@ -57,9 +57,10 @@
                 <version>3.1.2</version>
                 <configuration>
                     <!--  TODO Paralellik için TheradLocal ile configure edilmiş driver yapısı kullanılmalı-->
-                    <!--  <parallel>classes</parallel> &lt;!&ndash; class düzeyinde paralellik &ndash;&gt;-->
-                    <!--  <threadCount>3</threadCount> &lt;!&ndash; Aynı anda kaç test class'ı çalışsın &ndash;&gt;-->
-                    <reuseForks>false</reuseForks>
+                      <parallel>classes</parallel> <!-- class düzeyinde paralellik -->
+                      <threadCount>3</threadCount> <!-- Aynı anda kaç test class'ı çalışsın -->
+                    <!-- Paralel çalıştırmada burayı true yapalım -->
+                    <reuseForks>true</reuseForks>
                     <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
                     <includes>

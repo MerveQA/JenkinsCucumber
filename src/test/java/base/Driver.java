@@ -8,14 +8,13 @@ import org.openqa.selenium.edge.EdgeOptions;
 import utilities.ConfigReader;
 
 public class Driver {
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
     private Driver() {
-
     }
 
     public static WebDriver getDriver() {
-        if (driver == null) {
+        if (driverPool.get() == null) {
             String browser = ConfigReader.get("browser").toLowerCase();
 
             switch (browser) {
@@ -25,13 +24,13 @@ public class Driver {
                     chromeOptions.addArguments("--disable-notifications");
                     chromeOptions.addArguments("--disable-popup-blocking");
                     chromeOptions.addArguments("--incognito");
-                    driver = new ChromeDriver(chromeOptions);
+                    driverPool.set(new ChromeDriver(chromeOptions));
                     break;
 
                 case "edge":
                     EdgeOptions edgeOptions = new EdgeOptions();
                     edgeOptions.addArguments("start-maximized");
-                    driver = new EdgeDriver(edgeOptions);
+                    driverPool.set(new EdgeDriver(edgeOptions));
                     break;
 
                 case "headless-chrome":
@@ -40,8 +39,7 @@ public class Driver {
                     headlessChrome.addArguments("--window-size=1920,1080");
                     headlessChrome.addArguments("--disable-gpu");
                     headlessChrome.addArguments("--incognito");
-                    driver = new ChromeDriver(headlessChrome);
-                    driver = new ChromeDriver(headlessChrome);
+                    driverPool.set(new ChromeDriver(headlessChrome));
                     break;
 
                 default:
@@ -50,13 +48,13 @@ public class Driver {
 
         }
 
-        return driver;
+        return driverPool.get();
     }
 
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove();
         }
     }
 }

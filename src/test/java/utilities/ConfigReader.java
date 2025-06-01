@@ -20,12 +20,13 @@ public class ConfigReader {
         }
     }
 
-//    public static String get(String key) {
-//        return properties.getProperty(key);
-//    }
+    //  config dosyasındaki değeri döner
+    //  public static String get(String key)
+    //  {  return properties.getProperty(key);
+    //  }
 
     public static String get(String keyName) {
-        // Önce sistem property kontrol edilir (mvn test -Dbrowser=firefox gibi)
+        // Önce sistem property kontrol edilir (mvn test -Dbrowser=edge gibi)
         String systemValue = System.getProperty(keyName);
         if (systemValue != null) {
             return systemValue;
