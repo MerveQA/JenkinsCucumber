@@ -48,14 +48,17 @@
 
     <build>
         <plugins>
+            <!-- MAVEN ile yapılandırılmıs bir projenin JENKINS de çalışabilmesi için IDE de mvn komutlarıyla
+            çalışması gerekir. Bunun içinde bu plugin gerekir. Yapı IDE de paralel çalışsacak şekilde
+            yapılandırılmişsa JEMKIMS de de aynı şekilde çalışır -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-<!--                    TODO Paralellik için TheradLocal ile configure edilmiş driver yapısı kullanılmalı-->
-<!--                    <parallel>classes</parallel> &lt;!&ndash; class düzeyinde paralellik &ndash;&gt;-->
-<!--                    <threadCount>3</threadCount> &lt;!&ndash; Aynı anda kaç test class'ı çalışsın &ndash;&gt;-->
+                    <!--  TODO Paralellik için TheradLocal ile configure edilmiş driver yapısı kullanılmalı-->
+                    <!--  <parallel>classes</parallel> &lt;!&ndash; class düzeyinde paralellik &ndash;&gt;-->
+                    <!--  <threadCount>3</threadCount> &lt;!&ndash; Aynı anda kaç test class'ı çalışsın &ndash;&gt;-->
                     <reuseForks>false</reuseForks>
                     <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
