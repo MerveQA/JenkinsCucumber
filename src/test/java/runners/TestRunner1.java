@@ -15,5 +15,5 @@ import org.junit.runner.RunWith;
         dryRun = false,
         tags = "@c"
 )
-public class TestRunner {
+public class TestRunner1 {
 }
